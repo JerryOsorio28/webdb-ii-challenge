@@ -4,13 +4,20 @@ exports.up = function(knex) {
     return knex.schema.createTable('dealer', tbl => {
     
         tbl.increments() //auto increment primary key
-        tbl.string('cars', 128) //we are able to create 
-            .unique()
-            .notNullable();
+
+        //we are able to create 
+        tbl.string('VIN').unique().notNullable();
+        tbl.string('make').notNullable();
+        tbl.string('model').notNullable();
+        tbl.string('mileage').notNullable();
+
+        tbl.string('transmission').notNullable();
+        tbl.string('status').notNullable();
     })
 };
 
 exports.down = function(knex) {
+    
     //undo table changes
     return knex.schema.dropTableIfExists('dealer');
 };

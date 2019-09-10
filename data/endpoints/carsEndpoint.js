@@ -17,5 +17,18 @@ router.get('/', (req, res) => {
         })
         .catch(err => res.status(500).json(err))
 })
+//<----------POST REQUESTS------------------
+router.post('/', (req, res) => {
+
+    const newCar = req.body;//fetchs the data of the body
+
+    //select all from database
+    db('dealer')
+        .insert(newCar)
+        .then(car => {
+            res.status(200).json(car)
+        })
+        .catch(err => res.status(500).json(err))
+})
 
 module.exports = router;
