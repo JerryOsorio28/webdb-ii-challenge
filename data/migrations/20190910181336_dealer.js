@@ -6,10 +6,10 @@ exports.up = function(knex) {
         tbl.increments() //auto increment primary key
 
         //we are able to create 
-        tbl.string('VIN').unique().notNullable();
+        tbl.text('VIN').unique().notNullable();
         tbl.string('make').notNullable();
         tbl.string('model').notNullable();
-        tbl.string('mileage').notNullable();
+        tbl.integer('mileage').notNullable();
 
         tbl.string('transmission').notNullable();
         tbl.string('status').notNullable();

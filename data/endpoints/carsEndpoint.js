@@ -12,8 +12,21 @@ router.get('/', (req, res) => {
     //select all from database
     db.select('*')
         .from('dealer')
-        .then(data => {
-            res.status(200).json(data)
+        .then(cars => {
+            res.status(200).json(cars)
+        })
+        .catch(err => res.status(500).json(err))
+})
+router.get('/:id', (req, res) => {
+
+    const { id } = req.params; //fetchs id 
+
+    //select all from database
+    db.select('*')
+        .from('dealer')
+        .where({ id }) //targets specific car by id
+        .then(car => {
+            res.status(200).json(car)
         })
         .catch(err => res.status(500).json(err))
 })
